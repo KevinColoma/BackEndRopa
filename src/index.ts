@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
@@ -28,7 +28,8 @@ const clothingSchema = new mongoose.Schema<Clothing>({
 
 const ClothingModel = mongoose.model('Clothing', clothingSchema);
 
-app.get('/api/clothing', async (req, res) => {
+app.get('/api/clothing', async (req: Request, res: Response) => {
+
   const clothes = await ClothingModel.find();
   const withTax = clothes.map((item) => ({
     ...item.toObject(),
