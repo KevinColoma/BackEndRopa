@@ -1,10 +1,13 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
+mongoose.set('strictQuery', true);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const MONGO_URI = process.env.MONGO_URI || '';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://Usuario_DD:sancocho@delgadodiego.eat0ta1.mongodb.net/?retryWrites=true&w=majority&appName=DelgadoDiego';
 
 app.use(cors());
 app.use(express.json());
